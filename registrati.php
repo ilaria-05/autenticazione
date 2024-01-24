@@ -16,20 +16,19 @@
                 }
                 session_start();
                 $user = $_POST['User'];
-                $Nome = $_POST['Nome'];
-                $Cognome = $_POST['Cognome'];
-                $Password = $_POST['Password'];
+                $nome = $_POST['Nome'];
+                $cognome = $_POST['Cognome'];
+                $password = $_POST['Password'];
 
-                $query = "INSERT INTO utenti  (Username, Nome, Cognome, Password) VALUES
-                ('$user', '$Nome','$Cognome', '$Password'";
+                $query = "INSERT INTO utenti(Username, Nome, Cognome, Password) VALUES
+                ('$user', '$nome','$cognome', '$password')";
+                $risultato = mysqli_real_query($conn, $query);
 
-
-        
-                $risultato = mysqli_query($conn, $query);
                 if(!$risultato)
                 {
-                    print "Errore nel comando ";
-                    exit();
+                    print "Errore nell'inserimento username già esistente ";
+                } else {
+                    print "Registrazione avvenuta correttamente";
                 }
             mysqli_close($conn);
             ?>
